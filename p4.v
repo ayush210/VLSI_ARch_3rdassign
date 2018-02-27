@@ -35,7 +35,7 @@ if(in1>in2)
 		wire[7:0] in1,in2;
 		output[7:0] out;
 		reg[7:0] out;
-always @(clk)
+always @(*)
 		begin
 		out = in1+in2;
 		end
@@ -86,10 +86,10 @@ always @(*)
 		max m3(faltu3,faltu4,temp2,clk);
 		adder a1(temp2,out,ans,clk);
 		initial begin
-		$monitor("%d",ans);
+		$monitor($time,"%d",ans);
 		in1 = 1; in2 = 1;clk = 0;faltu = 23;
 		faltu3 = 0;
-#10 in1 = 1;in2 = 0;
+		#10 in1 = 1;in2 = 0;
 		end
 		endmodule
 
